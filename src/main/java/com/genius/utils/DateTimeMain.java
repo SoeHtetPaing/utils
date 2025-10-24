@@ -10,6 +10,7 @@ public class DateTimeMain {
         log.info("Myanmar Date: " + DateTimeHandler.getMyanmarDate());
         log.info("Myanmar Hour: " + DateTimeHandler.getMyanmarHour());
         log.info("Myanmar Millisecond: " + DateTimeHandler.getMyanmarMillisecond());
-        log.info("Yangon Zoned Date Time: " + DateTimeHandler.getMyanmarZonedDateTime());
+        log.info("Myanmar Date Time: " + DateTimeHandler.getMyanmarDateTime());
+        log.info("Zoned Date Time: " + DateTimeHandler.getDateTimeByZone(DateTimeHandler.getMyanmarDateTime(), "Asia/Tokyo"));
     }
 }

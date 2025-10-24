@@ -2,9 +2,7 @@ package com.genius.utils.lib;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 
 @Slf4j
@@ -14,11 +12,12 @@ public class LogHandler {
     private static String CLASS_NAME;
     private static String METHOD_NAME;
     private static String ABSOLUTE_FILE;
+    private static Date START_TIME;
 
     // set properties by Genius iQ @20250515
     public static void start(String filepath, String filename,
                              String projectName, String className,
-                             String methodName) throws IOException {
+                             String methodName) {
 
         String file = MediaHandler.generateMediaName(filename, "txt");
         if(MediaHandler.makeDirectory(filepath)) {
@@ -27,17 +26,18 @@ public class LogHandler {
             CLASS_NAME = className;
             METHOD_NAME = "Method: " + methodName;
             ABSOLUTE_FILE = filepath + "/" + file;
+            START_TIME = new Date();
             write("Start", "text");
         }
 
     }
 
     // write custom logs by Genius iQ @20250515
-    public static void write(Object content, String contentType) throws IOException {
+    public static void write(Object content, String contentType) {
         String fullContent = "";
 
         if(ABSOLUTE_FILE == null) {
-            log.warn("Does startLogger() not initiate?");
+            log.warn("LogHandler not started - call start() first!");
         } else {
             fullContent = DateTimeHandler.getMyanmarHour() + getSpace(1)
                     + DateTimeHandler.getMyanmarMillisecond() + getSpace(3)
@@ -51,24 +51,22 @@ public class LogHandler {
                         + getSpace(5) + getResponseFormat(content);
             }
 
-            try(BufferedWriter writer = new BufferedWriter(new FileWriter(ABSOLUTE_FILE, true))) {
-                writer.write(fullContent);
-                writer.newLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+           MediaHandler.writeText(ABSOLUTE_FILE, fullContent);
         }
 
     }
 
-    // clear properties by Genius iQ @20250515
-    public static void end() throws IOException {
-        write("End", "text");
+    // clear properties by Genius iQ @20250515 modified @20251024
+    public static void end() {
+        String duration = CommonHandler.convertMillisecondsToMinuteSecondMillisecond((int)(new Date().getTime() - START_TIME.getTime()));
+        String fullContent = putIntoBracket("Execute Time: " + duration) + getSpace(1) + "End";
+        write(fullContent, "text");
         REQUEST_ID = "";
         PROJECT_NAME = "";
         CLASS_NAME = "";
         METHOD_NAME =  "";
         ABSOLUTE_FILE = null;
+        START_TIME = null;
     }
 
     // private method by Genius iQ @20250515

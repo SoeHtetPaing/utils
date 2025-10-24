@@ -9,5 +9,6 @@ public class CommonMain {
         log.info("syskey: " + CommonHandler.getSyskey());
         log.info("Super Admin Raw: " + CommonHandler.getSuperAdmin());
         log.info("Super Admin Json: " + CommonHandler.toJSON(CommonHandler.getSuperAdmin()));
+        log.info("Convert 9999 ms: " + CommonHandler.convertMillisecondsToMinuteSecondMillisecond(9999));
     }
 }

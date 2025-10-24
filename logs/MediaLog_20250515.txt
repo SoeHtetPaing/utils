@@ -1,4 +1,0 @@
-12:27:29 AM 69589 MS   [GeniusAPI][MediaMain]     Start
-12:27:29 AM 71584 MS   [GeniusAPI][MediaMain]     [RequestID: 20250516002729655][Method: main]     RequestParam: {"Request":{"raw":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg\u003d\u003d","name":"Profile Picture.png","type":"png"}}
-12:27:29 AM 84472 MS   [GeniusAPI][MediaMain]     [RequestID: 20250516002729655][Method: main]     Output: {"Response":{"syskey":1,"userid":"genius.iq","username":"Soe Htet Paing"}}
-12:27:29 AM 84970 MS   [GeniusAPI][MediaMain]     End

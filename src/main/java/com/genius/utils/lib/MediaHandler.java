@@ -2,7 +2,10 @@ package com.genius.utils.lib;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 @Slf4j
 public class MediaHandler {
@@ -28,6 +31,21 @@ public class MediaHandler {
             status = dir.mkdirs();
         }
 
+        return status;
+    }
+
+    // append data to media file by Genius iQ @20251024
+    public static boolean writeText(String filePath, String content) {
+        boolean status = true;
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(content);
+            writer.newLine();
+        } catch (IOException e) {
+            log.error("Failed to write file: " + filePath, e);
+            status = false;
+        }
+        
         return status;
     }
 }
