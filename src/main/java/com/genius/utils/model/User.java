@@ -6,12 +6,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class User {
-    private long syskey;
+    private String syskey;
     private long autokey;
     private String createddate;
     private String modifieddate;
     private String createduser;
-    private String modifiedUser;
+    private String modifieduser;
     private int recordstatus;
     private String t1; // use userid both for mobile and web
     private String t2; // use username both for mobile and web
