@@ -7,17 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class MigrationDetail {
     private long syskey;
     private long autokey;
     private String createdDate;
-    private String modifiedDate;
     private String createdUser;
-    private String modifiedUser;
-    private int recordStatus;
-    private String userId; // t1
-    private String userName; // t2
-    private String uuid;
-    private String password; // t3
-    private String pincode; // t4
+    private String scriptName; // t1
+    private int status; // n1
+    private String message; // t2
+    private String query; // t3
+    private long parentId; // n2
 }

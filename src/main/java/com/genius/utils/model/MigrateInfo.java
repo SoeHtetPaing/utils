@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Media {
-    private String raw;
+public class MigrateInfo {
     private String name;
-    private String type;
+    private String version;
+    private int depth;
+    private boolean logging;
 }

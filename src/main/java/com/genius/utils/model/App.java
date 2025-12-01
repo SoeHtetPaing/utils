@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Media {
-    private String raw;
+public class App {
     private String name;
-    private String type;
+    private String version;
+    private String secretKey;
 }

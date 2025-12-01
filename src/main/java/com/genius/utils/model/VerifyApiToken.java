@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Media {
-    private String raw;
-    private String name;
-    private String type;
+public class VerifyApiToken {
+    private long status;
+    private String message;
 }
